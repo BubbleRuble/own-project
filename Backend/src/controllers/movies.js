@@ -2,25 +2,21 @@ const { Movie } = require('../models/Movie');
 
 const { HttpError, ctrlWrapper } = require('../helpers');
 
-// const getAll = async (req, res) => {
-//   const { _id: owner } = req.user;
-//   const { page = 1, limit = 3 } = req.query;
-//   const skip = (page - 1) * limit;
-//   const result = await Movie.find({ owner }, '-createdAt -updatedAt', {
-//     skip,
-//     limit,
-//   }).populate('owner', 'name email');
-//   res.json(result);
-// };
-
 const getAll = async (req, res) => {
-    const result = await Movie.find();
-    res.json(result);
-}
+  const { _id: owner } = req.user;
+  const { page = 1, limit = 3 } = req.query;
+  const skip = (page - 1) * limit;
+  const result = await Movie.find({ owner }, '-createdAt -updatedAt', {
+    skip,
+    limit,
+  }).populate('owner', 'name email');
+  res.json(result);
+};
 
 const getById = async (req, res) => {
   const { id } = req.params;
   const result = await Movie.findById(id);
+  console.log(result)
   if (!result) {
     throw HttpError(404, 'Not found');
   }
@@ -28,16 +24,14 @@ const getById = async (req, res) => {
 };
 
 const add = async (req, res) => {
-  // const { _id: owner } = req.user;
-  // const result = await Movie.create({ ...req.body, owner });
-  const result = await Movie.create(req.body);
+  const { _id: owner } = req.user;
+  const result = await Movie.create({ ...req.body, owner });
   res.status(201).json(result);
 };
 
 const updateById = async (req, res) => {
-  // const { id } = req.params;
-  // const result = await Movie.findByIdAndUpdate(id, req.body, { new: true });
-  const result = await Movie.findByIdAndUpdate(req.body);
+  const { id } = req.params;
+  const result = await Movie.findByIdAndUpdate(id, req.body, { new: true });
   if (!result) {
     throw HttpError(404, 'Not found');
   }
@@ -45,9 +39,8 @@ const updateById = async (req, res) => {
 };
 
 const updateFavorite = async (req, res) => {
-  // const { id } = req.params;
-  // const result = await Movie.findByIdAndUpdate(id, req.body, { new: true });
-  const result = await Movie.findByIdAndUpdate(req.body);
+  const { id } = req.params;
+  const result = await Movie.findByIdAndUpdate(id, req.body, { new: true });
   if (!result) {
     throw HttpError(404, 'Not found');
   }
@@ -55,8 +48,7 @@ const updateFavorite = async (req, res) => {
 };
 
 const deleteById = async (req, res) => {
-  // const { id } = req.params;
-  // const result = await Movie.findByIdAndRemove(id);
+  const { id } = req.params;
   const result = await Movie.findByIdAndRemove(id);
   if (!result) {
     throw HttpError(404, 'Not found');

@@ -8,18 +8,16 @@ const {schemas} = require('../../models/Movie')
 
 const router = express.Router();
 
-// authenticate
+router.get('/', authenticate, ctrl.getAll);
 
-router.get('/', ctrl.getAll);
+router.get('/:id',authenticate, isValidId, ctrl.getById);
 
-router.get('/:id',isValidId, ctrl.getById);
+router.post('/',authenticate, validateBody(schemas.addSchema), ctrl.add );
 
-router.post('/', validateBody(schemas.addSchema), ctrl.add );
+router.put('/:id',authenticate, isValidId, validateBody(schemas.addSchema), ctrl.updateById);
 
-router.put('/:id', isValidId, validateBody(schemas.addSchema), ctrl.updateById);
+router.patch('/:id',authenticate, isValidId, validateBody(schemas.addSchema), ctrl.updateFavorite);
 
-router.patch('/:id', isValidId, validateBody(schemas.addSchema), ctrl.updateFavorite);
-
-router.delete('/:id', isValidId, ctrl.deleteById);
+router.delete('/:id',authenticate, isValidId, ctrl.deleteById);
 
 module.exports = router;
