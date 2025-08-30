@@ -1,0 +1,16 @@
+.footer {
+  color: black;
+  display: flex;
+  justify-content:space-evenly;
+  align-items: center;
+}
+
+.github-link {
+  color: #000;             /* колір іконки */
+  transition: transform 0.3s, color 0.3s; /* плавна анімація */
+}
+
+.github-link:hover {
+  color: #fff;             /* змінюємо колір при hover */
+  transform: scale(1.2);   /* трохи збільшуємо */
+}

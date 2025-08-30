@@ -1,0 +1,65 @@
+body {
+  width: 1920px;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #C9C5C5;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+a {
+  text-decoration: none;
+}
+
+.main__container {
+  width: 1920px;
+  max-width: 100%; /* Додано, щоб забезпечити адаптивність */
+  margin: 0 auto; /* Центрує контейнер по горизонталі */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  /* background-color: #C9C5C5; */
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  /* background-color: #fff; */
+}
+
+main {
+  flex: 1;
+  margin-top: 80px; /* Налаштуй, якщо хедер має іншу висоту */
+}
+
+footer {
+  margin-top: auto;
+}
+
+.header__container,
+.footer__container {
+  width: 1680px;
+  max-width: 100%;
+  margin: 0 auto; /* Центрує внутрішні контейнери */
+}
+
+.header__container,
+.home__container {
+  display: block;
+  width: 1680px;
+  margin: 0 auto;
+  text-align: center;
+}
+

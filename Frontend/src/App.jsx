@@ -1,21 +1,21 @@
-import React from 'react';
+import './styles/styles.css';
 import {Route, Routes } from 'react-router-dom';
+import Home from './pages/Home';
+import Layout from './components/Layout';
+import Movies from './pages/Movies';
 
 const App = () => {
   return (
-    <>
+    <div>
       <Routes>
-        <Route path="/" element={<Layout/>} />
-      </Routes> 
-
-      {/* <div>
-        <h1>Logo</h1>
-        <h1>Info</h1>
-        <h1>Movies</h1>
-        <h1>Settings</h1>
-      </div> */}
-    </>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />         {/* / */}
+          <Route path="movies" element={<Movies />} /> {/* /movies */}
+        </Route>
+      </Routes>
+    </div>
   )
 }
 
 export default App;
+
