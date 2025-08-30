@@ -22,8 +22,8 @@ a {
 
 .main__container {
   width: 1920px;
-  max-width: 100%; /* Додано, щоб забезпечити адаптивність */
-  margin: 0 auto; /* Центрує контейнер по горизонталі */
+  max-width: 100%; 
+  margin: 0 auto; 
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -41,7 +41,7 @@ header {
 
 main {
   flex: 1;
-  margin-top: 80px; /* Налаштуй, якщо хедер має іншу висоту */
+  margin-top: 80px; 
 }
 
 footer {
@@ -52,7 +52,7 @@ footer {
 .footer__container {
   width: 1680px;
   max-width: 100%;
-  margin: 0 auto; /* Центрує внутрішні контейнери */
+  margin: 0 auto; 
 }
 
 .header__container,

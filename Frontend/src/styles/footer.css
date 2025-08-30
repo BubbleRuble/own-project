@@ -6,11 +6,11 @@
 }
 
 .github-link {
-  color: #000;             /* колір іконки */
-  transition: transform 0.3s, color 0.3s; /* плавна анімація */
+  color: #000;     
+  transition: transform 0.3s, color 0.3s; 
 }
 
 .github-link:hover {
-  color: #fff;             /* змінюємо колір при hover */
-  transform: scale(1.2);   /* трохи збільшуємо */
+  color: #fff;            
+  transform: scale(1.2);  
 }
