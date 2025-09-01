@@ -21,7 +21,7 @@ const SearchMovies = () => {
     return () => clearTimeout(timerId);
   }, []);
 
-  const filteredMovies = movies.filter(movie => {
+  const filteredMovies = searchMovies.filter(movie => {
     movie.title.toLowerCase().includes(query.toLowerCase());
   });
 

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:3000';
+const BASE_URL = 'http://localhost:4000';
 
 export const api = axios.create({
   baseURL: BASE_URL, 
@@ -18,9 +18,9 @@ export const addMovies = async (movie) => {
   }
 };
 
-export const getMovies = async (movie) => {
+export const getMovies = async () => {
   try {
-    const { data } = await api.get(BASE_URL, movie);
+    const { data } = await api.get(`${BASE_URL}/api/movies`);
     return data;
   } catch (error) {
     console.log(error);

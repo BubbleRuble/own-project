@@ -1,30 +1,52 @@
 import MovieForm from './MovieForm';
-import { addMovies } from '../api/movies';
-import { useState } from 'react';
+import { addMovies, getMovies } from '../api/movies';
+import { useState, useEffect } from 'react';
 
-const LoadMovies = () => {
+const Movies = () => {
   const [message, setMessage] = useState('');
 
-  const handlePostMovie = async (values, { resetForm, setErrors }) => {
-  try {
-    const newMovie = await addMovies(values);
-    if (newMovie.error) {
-      setErrors({ [newMovie.error.field]: newMovie.error.message });
-      return;
+    const handlePostMovie = async (values, { resetForm, setErrors }) => {
+    try {
+      const newMovie = await addMovies(values);
+      if (newMovie.error) {
+        setErrors({ [newMovie.error.field]: newMovie.error.message });
+        return;
+      }
+      setMessage(`Movie ${newMovie.title} added`);
+      resetForm();
+    } catch (error) {
+      console.error('Error adding movie:', error);
     }
-    setMessage(`Movie ${newMovie.title} added`);
-    resetForm();
-  } catch (error) {
-    console.error('Error adding movie:', error);
-  }
-};
+  };
+
+  const [movies, setMovies] = useState([]);
+
+  useEffect(() => {
+    const movies = async () => {
+      try {
+        const moviesArray = await getMovies();
+        setMovies(moviesArray);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    // movies();
+  }, []);
+
+
 
   return (
     <>
+    {/* {
+      movies && movies.map(item=> (
+        <div>{JSON.stringify(item, 2, null)}</div>
+      ))
+    } */}
+    {/* Visualize all movies from what we have got from backend */}
       <h1>Add your movie</h1>
       <MovieForm onSubmit={handlePostMovie} />
     </>
   );
 };
 
-export default LoadMovies;
+export default Movies;
