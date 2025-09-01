@@ -16,10 +16,10 @@ const Header = () => {
         </NavLink>
         <ul className="header__list">
           <li className="list__item">
-            <NavLink to="/movies">Movies</NavLink>
+            <NavLink to="/postmovies">Post movies</NavLink>
           </li>
           <li className="list__item">
-            <NavLink to="/movies">Settings</NavLink>
+            <NavLink to="/searchmovies">Find movies</NavLink>
           </li>
         </ul>
       </nav>

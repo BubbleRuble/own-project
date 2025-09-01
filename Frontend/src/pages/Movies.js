@@ -1,10 +1,9 @@
-import { NavLink } from 'react-router-dom';
-
+import LoadMovies from '../components/LoadMovies';
 
 const Movies = () => {
   return (
     <>
-    <p>Moviess</p>
+    <LoadMovies />
     </>
   )
 }
