@@ -56,7 +56,7 @@ const MovieForm = ({onSubmit}) => {
           </label>
           <br />
 
-          <button type="submit">Submit</button>
+          <button type="submit">Add movie</button>
         </Form>
       </Formik>
     </>
