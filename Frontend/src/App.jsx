@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import Layout from './components/Layout';
 import Movies from './pages/Movies';
 import Search from './pages/Search';
+import Movie from './pages/Movie';
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
           <Route index element={<Home />} />         
           <Route path="postmovies" element={<Movies />} /> 
           <Route path="searchmovies" element={<Search />} /> 
+          <Route path="movies/:id" element={<Movie />} /> 
         </Route>
       </Routes>
     </div>

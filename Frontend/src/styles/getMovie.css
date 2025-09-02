@@ -1,0 +1,25 @@
+.movie-item {
+  list-style: none;
+  margin: auto;
+  padding: 15px;
+  margin-bottom: 10px;
+  background-color: #2C91E6;
+  color: white;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  transition: all 0.3s ease; 
+  
+  cursor: pointer;
+}
+
+.movie-item:hover {
+  background-color: #eaeaea;
+  color: black;
+  transform: translateY(-1px); 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.movie-list {
+  display: flex;
+  justify-content: center;
+}

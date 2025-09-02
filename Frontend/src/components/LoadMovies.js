@@ -19,22 +19,6 @@ const Movies = () => {
     }
   };
 
-  const [movies, setMovies] = useState([]);
-
-  useEffect(() => {
-    const movies = async () => {
-      try {
-        const moviesArray = await getMovies();
-        setMovies(moviesArray);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    // movies();
-  }, []);
-
-
-
   return (
     <>
     {/* {

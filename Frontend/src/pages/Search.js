@@ -1,71 +1,98 @@
 import { NavLink } from 'react-router-dom';
-import MovieList from '../components/MovieList';
-import { addMovies, getMovies } from '../api/movies';
-import { useState, useEffect } from 'react';
+import MovieItem from '../components/MovieItem';
+import { addMovies, getMovies, handleMovieClick } from '../api/movies';
+import { useState, useEffect} from 'react';
+import { useNavigate } from "react-router";
+
+import Router from 'react-router-dom';
+import '../styles/getMovie.css';
+import { api } from '../config';
+
 
 const SearchMovies = () => {
   const [searchMovies, setSearchMovies] = useState([]);
   const [query, setQuery] = useState('');
-  const [searchSelected, setSearchSelected] = useState(null);
+  const [selectedMovie, setSelectedMovie] = useState(null);
+  const [movies, setMovies] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+  const navigate = useNavigate();
+
 
   useEffect(() => {
-    let timerId = setTimeout(async () => {
+    const fetchMovies = async () => {
       try {
-        const data = await getMovies();
-        setSearchMovies(data);
+        const data = await getMovies('');
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchMovies();
+  }, []);
+
+  useEffect(() => {
+    if (searchTerm.trim() === '') {
+      setMovies([]);
+      return;
+    }
+
+    const timeoutId = setTimeout(async () => {
+      try {
+        const data = await getMovies(searchTerm);
+        setMovies(data);
       } catch (error) {
         console.log(error);
       }
     }, 500);
-
-    return () => clearTimeout(timerId);
-  }, []);
-
-  const filteredMovies = searchMovies.filter(movie => {
-    movie.title.toLowerCase().includes(query.toLowerCase());
-  });
+    return () => clearTimeout(timeoutId);
+  }, [searchTerm]);
 
 
-  const handleSelect = movie => {
-    setSearchSelected(movie);
-    setQuery(movie.title);
+  const handleMovieClick = async (movieId) => {
+    try {
+      const data = await api.get(`/api/movies/${movieId}`);
+      setSelectedMovie(data);
+
+      navigate(`/movies/${movieId}`)
+    } catch (error) {
+      console.error('Помилка при завантаженні деталей фільму:', error);
+    }
   };
 
   return (
     <>
-      <h1>Search Movies</h1>
-      <input
-        type="text"
-        placeholder="type your title"
-        value={query}
-        onChange={e => setQuery(e.target.value)}
-      />
-
-      <div>
-        {query && !searchSelected && (
-          <ul>
-            {filteredMovies.map(movie => (
-              <li key={movie.title} onClick={() => handleSelect(movie)}>
-                {movie.title}
-              </li>
-            ))}
-          </ul>
-        )}
-
-        <div>
-          {searchSelected ? (
-            <div>
-              <h2>{searchSelected.title}</h2>
-              <p>Author: {searchSelected.author}</p>
-              <p>Genre: {searchSelected.genre}</p>
-              <p>Date:{searchSelected.date}</p>
-              <p>{searchSelected.favorite}</p>
-            </div>
-          ) : (
-            query && <MovieList movies={filteredMovies} />
-          )}
+      {selectedMovie ? (
+        <div className="movie-details">
+          <button onClick={() => setSelectedMovie(null)}>Назад</button>
+          <h2>{selectedMovie.title}</h2>
+          <p>Author: {selectedMovie.author}</p>
+          <p>Genre: {selectedMovie.genre}</p>
+          <p>Date:{selectedMovie.date}</p>
+          <p>Rating: {selectedMovie.rating}</p>
         </div>
-      </div>
+      ) : (
+        <>
+          <h1>Search Movies</h1>
+          <input
+            type="text"
+            placeholder="type your title"
+            value={searchTerm}
+            onChange={e => setSearchTerm(e.target.value)}
+          />
+          <div className="movie-list">
+            {movies.length > 0 ? (
+              movies.map(movie => (
+                <li key={movie._id} 
+                className='movie-item'
+                onClick={() => handleMovieClick(movie._id)}>
+                  {movie.title}
+                </li>
+              ))
+            ) : (
+              <p>Фільм не знайдено</p>
+            )}
+          </div>
+        </>
+      )}
     </>
   );
 };
