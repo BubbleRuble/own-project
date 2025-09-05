@@ -19,6 +19,7 @@ export const getMovies = async (query) => {
   }
 };
 
+
 export const handleMovieClick = async (movieId) => {
   try {
     return await api.get(`/api/movies/${movieId}`);

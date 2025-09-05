@@ -1,6 +1,9 @@
 import { useParams } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState, useEffect} from 'react';
+import { getMovies } from '../api/movies';
 import { api } from '../config';
+import MovieList  from '../components/MovieList';
+import MovieItem from '../components/MovieItem';
 
 
 const Movie = () => {
@@ -16,8 +19,13 @@ const Movie = () => {
   //   };
 
   const [currentMovie, setCurrentMovie] = useState([]);
+  const [loading, setLoading] = useState(true)
   const params = useParams();
-  console.log(params);
+  // console.log(params);
+
+  const handleSelect = (movie) => {
+    setCurrentMovie(currentMovie); 
+  };
 
   useEffect(() => {
     const fetchMovie = async movieId => {
@@ -31,19 +39,15 @@ const Movie = () => {
     fetchMovie()
   }, []);
 
-  console.log(currentMovie)
+  if (!currentMovie) return <p>Loading...</p>
 
   return (
     <>
+    <h1>Here is your result</h1>
       <div className="movie-list">
 
-            <li
-              className="movie-item"
-            >
-              {currentMovie.title}
-            </li>
+            <MovieItem movies={currentMovie} handleSelect={handleSelect}/>
       </div>
-      <h1>Hello</h1>
     </>
   );
 };

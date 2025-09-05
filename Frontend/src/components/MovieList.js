@@ -7,6 +7,7 @@ const MovieList = ({ movies }) => {
           <p>Author: {movies.author}</p>
           <p>Genre: {movies.genre}</p>
           <p>Date: {movies.date}</p>
+          <p>Rating: {movies.rating}</p>
         </div>
       ))}
     </div>

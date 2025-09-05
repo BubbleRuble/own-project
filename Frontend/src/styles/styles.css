@@ -27,7 +27,6 @@ a {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  /* background-color: #C9C5C5; */
 }
 
 header {
@@ -56,7 +55,8 @@ footer {
 }
 
 .header__container,
-.home__container {
+.home__container,
+.form-container {
   display: block;
   width: 1680px;
   margin: 0 auto;
