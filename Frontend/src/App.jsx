@@ -5,6 +5,9 @@ import Layout from './components/Layout';
 import Movies from './pages/Movies';
 import Search from './pages/Search';
 import Movie from './pages/Movie';
+import Register from './pages/Register';
+import Login from './pages/Login';
+import Dashboard from './pages/Dashboard';
 
 const App = () => {
   return (
@@ -15,6 +18,9 @@ const App = () => {
           <Route path="postmovies" element={<Movies />} /> 
           <Route path="searchmovies" element={<Search />} /> 
           <Route path="movies/:id" element={<Movie />} /> 
+          <Route path="registration" element={<Register />} /> 
+          <Route path="login" element={<Login />} /> 
+          <Route path="dashboard" element={<Dashboard />} /> 
         </Route>
       </Routes>
     </div>
