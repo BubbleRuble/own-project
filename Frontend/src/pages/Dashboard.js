@@ -1,7 +1,7 @@
 const Dashboard = () => {
   return (
     <>
-    <h1>Hello it's ur private page</h1>
+    <h1>User sing up success</h1>
     </>
   )
 }

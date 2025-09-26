@@ -28,3 +28,17 @@ a:hover,
 a:focus{
   color: #1966A8;
 }
+
+.logout-button {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: transparent;
+  border: 2px solid transparent;
+  border-radius: 5px;
+}
+
+.logout-button:hover,
+.logout-button:focus{
+  background-color: rgba(0, 0, 0, 0.1);
+  color: #2F93EB;
+}

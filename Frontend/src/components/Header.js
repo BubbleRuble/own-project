@@ -1,8 +1,12 @@
 import { NavLink} from "react-router-dom";
 import '../styles/header.css'
+import { useAuth } from '../context/AuthContext'; 
+import { Logout } from "./Logout";
 
 const Header = () => {
-  const token = localStorage.getItem('token')
+  const {user, loading} = useAuth();
+
+  if (loading) return null
 
   return (
     <nav className="header__nav">
@@ -11,14 +15,14 @@ const Header = () => {
       </NavLink>
 
       <ul className="header__list">
-        {!token ? (
+        {!user ? (
           <>
             <li className="list__item">
               <NavLink to="/registration">Register</NavLink>
             </li>
-            {/* <li className="list__item">
+            <li className="list__item">
               <NavLink to="/login">Login</NavLink>
-            </li> */}
+            </li>
           </>
         ) : (
           <>
@@ -29,14 +33,7 @@ const Header = () => {
               <NavLink to="/searchmovies">Find movies</NavLink>
             </li>
             <li className="list__item">
-              <button
-                onClick={() => {
-                  localStorage.removeItem("token");
-                  window.location.reload();
-                }}
-              >
-                Logout
-              </button>
+              <Logout />
             </li>
           </>
         )}

@@ -1,5 +1,4 @@
 import { Outlet } from "react-router-dom";
-import home from '../styles/home.css';
 
 const Home = () => {
   return (

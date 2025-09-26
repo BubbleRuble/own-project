@@ -18,11 +18,13 @@ export const loginUser = async (credentials) => {
   }
 }
 
-api.interceptors.request.use((config) => {
-  const token = localStorage.getItem("token");
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
+export const currentUser = async () => {
+  try {
+    const { data } = await api.get('/api/auth/current');
+    return data;
+  } catch (error) {
+    console.error(error.response?.data || error.message);
   }
-  return config;
-});
+}
+
 

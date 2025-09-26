@@ -1,5 +1,6 @@
 import './styles/styles.css';
-import {Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
+import PrivateRoute from '../src/components/PrivateRoute';
 import Home from './pages/Home';
 import Layout from './components/Layout';
 import Movies from './pages/Movies';
@@ -14,20 +15,26 @@ const App = () => {
     <div>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />         
-          <Route path="postmovies" element={<Movies />} /> 
-          <Route path="searchmovies" element={<Search />} /> 
-          <Route path="movies/:id" element={<Movie />} /> 
-          <Route path="registration" element={<Register />} /> 
-          <Route path="login" element={<Login />} /> 
-          <Route path="dashboard" element={<Dashboard />} /> 
+          <Route index element={<Home />} />
+          <Route
+            path="postmovies"
+            element={<PrivateRoute>{<Movies />}</PrivateRoute>}
+          />
+          <Route
+            path="searchmovies"
+            element={<PrivateRoute>{<Search />}</PrivateRoute>}
+          />
+          <Route path="movies/:id" element={<Movie />} />
+          <Route path="registration" element={<Register />} />
+          <Route path="login" element={<Login />} />
+          <Route
+            path="dashboard"
+            element={<PrivateRoute>{<Dashboard />}</PrivateRoute>}
+          />
         </Route>
       </Routes>
     </div>
-  )
-}
+  );
+};
 
 export default App;
-
-
-

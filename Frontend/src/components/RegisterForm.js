@@ -1,4 +1,5 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+import '../styles/userface.css';
 import * as Yup from 'yup';
 
 const emailRegexp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -25,32 +26,50 @@ const RegisterForm = ({ onSubmit }) => {
         validationSchema={validationSchema}
         onSubmit={onSubmit}
       >
-        {({ errors, touched, isSubmitting }) => (
-          <Form autoComplete="off">
-            <div className="form-group">
-              <label>
-                <span>Name</span>
-                <Field type="text" name="name" />
-                {touched.name && errors.name}
-              </label>
+        {({ isSubmitting }) => (
+          <div className="register-form-container">
+            <Form autoComplete="off" className="form-list">
+              <div className="register-form-group">
+                <label>
+                  <span>Name</span>
+                  <Field type="text" name="name" />
+                  <ErrorMessage
+                    name="name"
+                    component="div"
+                    className="input-error"
+                  />
+                </label>
+              </div>
 
-              <label>
-                <span>Email</span>
-                <Field type="text" name="email" />
-                {touched.email && errors.email}
-              </label>
+              <div className="register-form-group">
+                <label>
+                  <span>Email</span>
+                  <Field type="text" name="email" />
+                  <ErrorMessage
+                    name="email"
+                    component="div"
+                    className="input-error"
+                  />
+                </label>
+              </div>
 
-              <label>
-                <span>Password</span>
-                <Field type="password" name="password" />
-                {touched.password && errors.password}
-              </label>
-            </div>
+              <div className="register-form-group">
+                <label>
+                  <span>Password</span>
+                  <Field type="text" name="password" />
+                  <ErrorMessage
+                    name="password"
+                    component="div"
+                    className="input-error"
+                  />
+                </label>
+              </div>
 
-            <button type="submit" disabled={isSubmitting}>
-              Sign up
-            </button>
-          </Form>
+              <button type="submit" disabled={isSubmitting}>
+                Sign up
+              </button>
+            </Form>
+          </div>
         )}
       </Formik>
     </>
