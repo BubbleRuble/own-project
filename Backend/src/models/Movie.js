@@ -13,7 +13,7 @@ const genrelist = [
   'thriller',
 ];
 
-const dateRegexp = /^\d{2}-\d{4}$/;
+const dateRegexp = /^\d{4}$/;
 
 const movieSchema = new Schema(
   {
@@ -40,6 +40,10 @@ const movieSchema = new Schema(
       match: dateRegexp,
       required: true,
     },
+    rating: {
+      type:Number,
+      required: true,
+    },
     owner:{
       type: Schema.Types.ObjectId,
       ref: 'user',
@@ -60,6 +64,7 @@ const addSchema = Joi.object({
     .valid(...genrelist)
     .required(),
   date: Joi.string().pattern(dateRegexp).required(),
+  rating: Joi.number().required(),
 });
 
 const updateFavoriteSchema = Joi.object({

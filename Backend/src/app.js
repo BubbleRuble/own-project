@@ -16,8 +16,9 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static('public'));
 
-app.use('/api/movies',moviesRouter);
+// app.use('/api/movies',moviesRouter);
 app.use('/api/auth',authRouter);
+app.use('/api', moviesRouter);
 
 app.use((req, res) => {
   res.status(404).json({ message: 'Not found' });
