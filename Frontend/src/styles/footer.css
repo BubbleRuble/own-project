@@ -1,12 +1,10 @@
 .footer {
-  color: black;
   display: flex;
   justify-content:space-evenly;
   align-items: center;
 }
 
 .github-link {
-  color: #000;     
   transition: transform 0.3s, color 0.3s; 
 }
 

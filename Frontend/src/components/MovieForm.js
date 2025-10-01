@@ -1,5 +1,5 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import '../styles/form.css';
+import '../styles/index.css';
 import * as Yup from 'yup';
 
 const genrelist = [

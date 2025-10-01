@@ -1,12 +1,26 @@
-import { NavLink} from "react-router-dom";
-import '../styles/header.css'
-import { useAuth } from '../context/AuthContext'; 
-import { Logout } from "./Logout";
+import { NavLink } from 'react-router-dom';
+import '../styles/header.css';
+import { useAuth } from '../context/AuthContext';
+import { Logout } from './Logout';
+import { ThemeProvider, useTheme } from '../Theme/ThemeContext';
 
 const Header = () => {
-  const {user, loading} = useAuth();
+  const { user, loading } = useAuth();
 
-  if (loading) return null
+  if (loading) return null;
+
+  const ThemeToggle = () => {
+    const { theme, toggleTheme } = useTheme();
+    return (
+      <button
+        onClick={toggleTheme}
+        className="theme-button"
+        aria-label="Toggle theme"
+      >
+        {theme === 'dark' ? 'Light mode' : 'Dark mode'}
+      </button>
+    );
+  };
 
   return (
     <nav className="header__nav">
@@ -18,6 +32,9 @@ const Header = () => {
         {!user ? (
           <>
             <li className="list__item">
+              <ThemeToggle />
+            </li>
+            <li className="list__item">
               <NavLink to="/registration">Register</NavLink>
             </li>
             <li className="list__item">
@@ -26,6 +43,9 @@ const Header = () => {
           </>
         ) : (
           <>
+            <li className="list__item">
+              <ThemeToggle />
+            </li>
             <li className="list__item">
               <NavLink to="/postmovies">Post movies</NavLink>
             </li>

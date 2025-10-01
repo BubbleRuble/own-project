@@ -1,6 +1,8 @@
 import './styles/styles.css';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Link } from 'react-router-dom';
 import PrivateRoute from '../src/components/PrivateRoute';
+import { AuthProvider, useAuth } from './context/AuthContext';
+import { ThemeProvider, useTheme } from '../src/Theme/ThemeContext';
 import Home from './pages/Home';
 import Layout from './components/Layout';
 import Movies from './pages/Movies';
@@ -12,28 +14,32 @@ import Dashboard from './pages/Dashboard';
 
 const App = () => {
   return (
-    <div>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route
-            path="postmovies"
-            element={<PrivateRoute>{<Movies />}</PrivateRoute>}
-          />
-          <Route
-            path="searchmovies"
-            element={<PrivateRoute>{<Search />}</PrivateRoute>}
-          />
-          <Route path="movies/:id" element={<Movie />} />
-          <Route path="registration" element={<Register />} />
-          <Route path="login" element={<Login />} />
-          <Route
-            path="dashboard"
-            element={<PrivateRoute>{<Dashboard />}</PrivateRoute>}
-          />
-        </Route>
-      </Routes>
-    </div>
+    <ThemeProvider>
+      <AuthProvider>
+        <div>
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<Home />} />
+              <Route
+                path="postmovies"
+                element={<PrivateRoute>{<Movies />}</PrivateRoute>}
+              />
+              <Route
+                path="searchmovies"
+                element={<PrivateRoute>{<Search />}</PrivateRoute>}
+              />
+              <Route path="movies/:id" element={<Movie />} />
+              <Route path="registration" element={<Register />} />
+              <Route path="login" element={<Login />} />
+              <Route
+                path="dashboard"
+                element={<PrivateRoute>{<Dashboard />}</PrivateRoute>}
+              />
+            </Route>
+          </Routes>
+        </div>
+      </AuthProvider>
+    </ThemeProvider>
   );
 };
 

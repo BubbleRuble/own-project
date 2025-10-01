@@ -1,17 +1,12 @@
-import { NavLink } from 'react-router-dom';
-import MovieItem from '../components/MovieItem';
-import { addMovies, getMovies, handleMovieClick } from '../api/movies';
+import { getMovies} from '../api/movies';
 import { useState, useEffect} from 'react';
 import { useNavigate } from "react-router";
-
-import Router from 'react-router-dom';
-import '../styles/getMovie.css';
+import {SearchIcon} from '../components/SearchBox.styled';
+import '../styles/index.css';
 import { api } from '../config';
 
 
 const SearchMovies = () => {
-  const [searchMovies, setSearchMovies] = useState([]);
-  const [query, setQuery] = useState('');
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [movies, setMovies] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -71,13 +66,16 @@ const SearchMovies = () => {
         </div>
       ) : (
         <>
-          <h1>Search Movies</h1>
-          <input
+          <div className='search-container'>
+            <h1>Search Movies</h1>
+          <SearchIcon className='searchicon'/>
+          <div className='input-container'><label><input
             type="text"
             placeholder="type your title"
             value={searchTerm}
             onChange={e => setSearchTerm(e.target.value)}
-          />
+          /></label></div>
+          </div>
           <div className="movie-list">
             {movies.length > 0 ? (
               movies.map(movie => (

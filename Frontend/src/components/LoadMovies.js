@@ -1,5 +1,5 @@
 import MovieForm from './MovieForm';
-import { addMovies} from '../api/movies';
+import { addMovies } from '../api/movies';
 import { useState } from 'react';
 
 const Movies = () => {

@@ -1,0 +1,33 @@
+.dashboard-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  height: 50vh; 
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #e0f7fac4, #ffffff); 
+  border-radius: 400px;
+}
+
+.dashboard-link a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #0284c7; 
+  background: white;
+  padding: 1rem 2rem;
+  border: 1px solid rgba(136, 133, 133, 0.288);
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+.dashboard-link a:hover,
+.dashboard-link a:focus {
+  background-color: rgb(66, 98, 236);
+  color: white;
+}

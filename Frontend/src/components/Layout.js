@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/styles.css';
+import '../styles/index.css';
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';

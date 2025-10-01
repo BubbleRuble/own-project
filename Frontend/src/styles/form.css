@@ -45,6 +45,13 @@
   font-size: 0.9em;
   margin-top: 5px;
 }
+
+.error {
+  color: #dc3545;
+  font-size: 1em;
+  font-weight: 600;
+}
+
 .field-border {
   height: 2px;
   background-color: #000;

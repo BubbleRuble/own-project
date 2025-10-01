@@ -1,35 +1,22 @@
 import RegisterForm from '../components/RegisterForm';
-import { registerUser, loginUser, currentUser } from '../api/auth';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext'; 
+import { useAuth } from '../context/AuthContext';
 
 const Register = () => {
+  const { register, login } = useAuth();
   const navigate = useNavigate();
-  const { login } = useAuth();
 
-  const handleRegister = async (values, { setSubmitting, resetForm }) => {
+  const handleRegister = async (values, { setSubmitting, setFieldError }) => {
     try {
-      await registerUser(values);
+      await register( values );
 
-      const loginRes = await loginUser({
-        email: values.email,
-        password: values.password,
-      });
-      console.log("userData:", loginRes.user);
+      // await login(values.email, values.password);
 
-      const token = loginRes.token;
-
-      if (token) {
-        localStorage.setItem("token", token)
-      }
-
-      const userData = await currentUser();
-      login(userData,token)
-
-      resetForm();
-      navigate('/dashboard', { replace: true});
+      navigate('/dashboard', { replace: true });
     } catch (error) {
-      console.error(error.message);
+      setFieldError(
+        'general',error?.response?.data?.message || 'Registration failed',
+      );
     } finally {
       setSubmitting(false);
     }
