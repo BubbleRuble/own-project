@@ -1,10 +1,9 @@
-import { getMovies} from '../api/movies';
-import { useState, useEffect} from 'react';
-import { useNavigate } from "react-router";
-import {SearchIcon} from '../components/SearchBox.styled';
+import { getMovies } from '../api/movies';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router';
+import { SearchIcon } from '../components/SearchBox.styled';
 import '../styles/index.css';
 import { api } from '../config';
-
 
 const SearchMovies = () => {
   const [selectedMovie, setSelectedMovie] = useState(null);
@@ -41,13 +40,12 @@ const SearchMovies = () => {
     return () => clearTimeout(timeoutId);
   }, [searchTerm]);
 
-
-  const handleMovieClick = async (movieId) => {
+  const handleMovieClick = async movieId => {
     try {
       const data = await api.get(`/api/movies/${movieId}`);
       setSelectedMovie(data);
 
-      navigate(`/movies/${movieId}`)
+      navigate(`/movies/${movieId}`);
     } catch (error) {
       console.error('Помилка при завантаженні деталей фільму:', error);
     }
@@ -55,42 +53,35 @@ const SearchMovies = () => {
 
   return (
     <>
-      {selectedMovie ? (
-        <div className="movie-details">
-          <button onClick={() => setSelectedMovie(null)}>Назад</button>
-          <h2>{selectedMovie.title}</h2>
-          <p>Author: {selectedMovie.author}</p>
-          <p>Genre: {selectedMovie.genre}</p>
-          <p>Date:{selectedMovie.date}</p>
-          <p>Rating: {selectedMovie.rating}</p>
+      <div className="search-container">
+        <h1>Search Movies</h1>
+        <SearchIcon className="searchicon" />
+        <div className="input-container">
+          <label>
+            <input
+              type="text"
+              placeholder="type your title"
+              value={searchTerm}
+              onChange={e => setSearchTerm(e.target.value)}
+            />
+          </label>
         </div>
-      ) : (
-        <>
-          <div className='search-container'>
-            <h1>Search Movies</h1>
-          <SearchIcon className='searchicon'/>
-          <div className='input-container'><label><input
-            type="text"
-            placeholder="type your title"
-            value={searchTerm}
-            onChange={e => setSearchTerm(e.target.value)}
-          /></label></div>
-          </div>
-          <div className="movie-list">
-            {movies.length > 0 ? (
-              movies.map(movie => (
-                <li key={movie._id} 
-                className='movie-item'
-                onClick={() => handleMovieClick(movie._id)}>
-                  {movie.title}
-                </li>
-              ))
-            ) : (
-              <p>Фільм не знайдено</p>
-            )}
-          </div>
-        </>
-      )}
+      </div>
+      <div >
+        {movies.length > 0 ? (
+          movies.map(movie => (
+            <li
+              key={movie._id}
+              className="search-result"
+              onClick={() => handleMovieClick(movie._id)}
+            >
+              {movie.title}
+            </li>
+          ))
+        ) : (
+          <p>Фільм не знайдено</p>
+        )}
+      </div>
     </>
   );
 };

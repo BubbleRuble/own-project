@@ -1,6 +1,10 @@
-import React from 'react';
+import '../styles/index.css';
 
 const MovieItem = ({ movies, handleSelect }) => {
+  if (!movies || !movies.title) {
+    return null;
+  }
+
   return (
     <div className="movie__item" onClick={() => handleSelect(movies)}>
       <div>

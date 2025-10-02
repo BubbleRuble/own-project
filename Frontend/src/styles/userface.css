@@ -59,7 +59,7 @@
   margin-bottom: 15px;
 }
 
-.register-form-group input[type='text'] {
+.register-form-group input {
   width: 100%;
   padding: 10px;
   border: transparent;
@@ -68,7 +68,7 @@
   box-sizing: border-box;
 }
 
-.register-form-group input[type='text']:focus {
+.register-form-group input:focus {
   outline: none;
   border-color: #495057;
 }

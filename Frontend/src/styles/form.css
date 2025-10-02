@@ -11,6 +11,28 @@
   align-items: center;
 }
 
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  border: transparent;
+  border-radius: 5px;
+  font-size: 22px;
+  box-sizing: border-box;
+  background-color: #fff;
+  appearance: none; 
+  cursor: pointer;
+}
+
+.form-group select:focus {
+  outline: none;
+  border-color: #495057;
+}
+
+.form-group select option {
+  font-size: 22px;
+  color: black;
+}
+
 .form-group label {
   display: block;
   font-weight: 500;

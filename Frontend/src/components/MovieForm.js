@@ -71,7 +71,14 @@ const MovieForm = ({ onSubmit }) => {
             <div class="form-group">
               <label>
                 <span>Genre</span>
-                <Field type="text" name="genre" />
+                <Field as="select" name="genre" className="form-control">
+                  <option value="">Обери жанр</option>
+                  {genrelist.map(genre => (
+                    <option key={genre} value={genre}>
+                      {genre}
+                    </option>
+                  ))}
+                </Field>
                 <ErrorMessage
                   name="genre"
                   component="div"

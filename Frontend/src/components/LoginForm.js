@@ -32,7 +32,7 @@ export const LoginForm = ({onSubmit}) => {
               <div className="register-form-group">
                 <label>
                   <span>Email</span>
-                  <Field type="text" name="email" />
+                  <Field type="email" name="email" />
                   <ErrorMessage
                     name="email"
                     component="div"
@@ -44,7 +44,7 @@ export const LoginForm = ({onSubmit}) => {
               <div className="register-form-group">
                 <label>
                   <span>Password</span>
-                  <Field type="text" name="password" />
+                  <Field type="password" name="password" />
                   <ErrorMessage
                     name="password"
                     component="div"
