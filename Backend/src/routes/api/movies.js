@@ -10,7 +10,7 @@ const router = express.Router();
 
 router.get('/movies', authenticate, ctrl.getMoviesByTitle);
 
-router.get('/movies', authenticate, ctrl.getAllMovies);
+router.get('/movies/all', authenticate, ctrl.getAllMovies);
 
 router.get('/movies/:id', authenticate, isValidId, ctrl.getById);
 

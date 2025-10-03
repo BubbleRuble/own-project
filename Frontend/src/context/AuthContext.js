@@ -53,7 +53,6 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     setAuthTokenHeader(token);
-    console.log('token',token);
     if (token) localStorage.setItem('token', token);
     else localStorage.removeItem('token');
   }, [token]);

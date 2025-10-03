@@ -4,6 +4,7 @@ import '../styles/index.css';
 
 const Dashboard = () => {
   const { user } = useAuth();
+
   return (
     <div className="dashboard">
     <h1>Hello, {user.name} !</h1>

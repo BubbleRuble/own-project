@@ -11,6 +11,7 @@ import Movie from './pages/Movie';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
+import MyCollection from './components/MyCollection';
 
 const App = () => {
   return (
@@ -33,7 +34,7 @@ const App = () => {
               <Route path="login" element={<Login />} />
               <Route
                 path="dashboard"
-                element={<PrivateRoute>{<Dashboard />}</PrivateRoute>}
+                element={<PrivateRoute>{<MyCollection />}</PrivateRoute>}
               />
             </Route>
           </Routes>
