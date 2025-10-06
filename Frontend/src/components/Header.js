@@ -53,6 +53,9 @@ const Header = () => {
               <NavLink to="/searchmovies">Find movies</NavLink>
             </li>
             <li className="list__item">
+              <NavLink to="/mycollection">My collection</NavLink>
+            </li>
+            <li className="list__item">
               <Logout />
             </li>
           </>

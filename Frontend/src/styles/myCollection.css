@@ -1,0 +1,60 @@
+.movies-table {
+  width: 90%; 
+  border-collapse: collapse;
+  background-color: #d8d8e5; 
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  margin: auto; 
+}
+
+.movies-table thead {
+  background-color: #c0c0d1;
+  color: #333;
+  border-bottom: 2px solid #5d5d81;
+}
+
+select {
+  padding: 6px 10px;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.movies-header {
+  padding: 12px 15px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+  cursor: pointer;
+
+  user-select: none; 
+}
+
+.movies-header:hover {
+  background-color: #b0b0c2; 
+}
+
+.movies-table tbody tr {
+  border-bottom: 1px solid #e0e0e8; 
+}
+
+.movies-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.movies-table tbody tr:nth-child(even) {
+  background-color: #f0da78; 
+}
+
+/* .movies-table tbody tr:hover {
+  background-color: #e8e8ed; 
+} */
+
+.movie-cell {
+  padding: 10px 15px;
+  text-align: left;
+  color: black;
+}
+
