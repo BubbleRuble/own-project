@@ -18,7 +18,7 @@ router.post('/movies', authenticate, validateBody(schemas.addSchema), ctrl.addMo
 
 router.put('/movies/:id', authenticate, isValidId, validateBody(schemas.addSchema), ctrl.updateById);
 
-router.patch('/movies/:id', authenticate, isValidId, validateBody(schemas.addSchema), ctrl.updateFavorite);
+router.patch('/movies/:id', authenticate, isValidId, validateBody(schemas.updateFavoriteSchema), ctrl.updateFavorite);
 
 router.delete('/movies/:id', authenticate, isValidId, ctrl.deleteById);
 
